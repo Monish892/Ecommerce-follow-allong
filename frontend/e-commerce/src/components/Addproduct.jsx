@@ -34,20 +34,20 @@ const AddProduct = () => {
     images.forEach(image => formData.append('images', image));
 
     try {
-      const token = localStorage.getItem('token'); // Get the token from local storage
+      const token = localStorage.getItem('token'); 
       const response = await axios.post(
         'http://localhost:5000/api/products',
         formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data',
-            'Authorization': `Bearer ${token}` // Include the Authorization header
+            'Authorization': `Bearer ${token}` 
           },
         }
       );
       console.log(response.data);
       alert('Product added successfully!');
-      navigate('/product'); // Redirect to My Products page
+      navigate('/product');
     } catch (error) {
       console.error('Error adding product:', error.response?.data?.message || error.message);
       setError(error.response?.data?.message || 'Failed to add product. Please try again.');
