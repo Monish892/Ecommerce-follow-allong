@@ -468,3 +468,50 @@ The navigation links are styled appropriately and organized in a clean layout to
 
 React.js
 HTML/CSS for styling
+
+## milestone-16 progress
+
+# Add to Cart and Quantity Button
+
+## Overview
+In Milestone 16, we implemented the "Add to Cart" functionality and a quantity button on the product info page. This allows users to add products to their shopping cart and adjust the quantity of each product before purchasing.
+
+## Features
+1. **Add to Cart**:
+   - Users can add products to their shopping cart from the product info page.
+   - The cart updates dynamically to reflect the added items.
+
+2. **Quantity Button**:
+   - Users can increase or decrease the quantity of each product in their cart.
+   - The total price updates based on the selected quantity.
+
+## Implementation Summary
+
+### Add to Cart:
+- Added an "Add to Cart" button on the product info page.
+- When clicked, the product is added to the user's shopping cart.
+- The cart state is updated to include the new product.
+
+### Quantity Button:
+- Added "+" and "-" buttons to adjust the quantity of each product in the cart.
+- The quantity is updated in the cart state and the total price is recalculated.
+
+## Technologies Used
+- **Frontend**:
+  - React.js for dynamic UI updates.
+  - CSS for styling the buttons and cart interface.
+
+- **Backend**:
+  - Node.js and Express.js for handling cart-related API requests.
+  - MongoDB for storing cart data.
+
+## How to Use
+1. Navigate to the product info page.
+2. Click the "Add to Cart" button to add the product to your cart.
+3. Use the "+" and "-" buttons to adjust the quantity of the product in your cart.
+4. The cart will update dynamically to reflect the changes.
+
+---
+
+
+

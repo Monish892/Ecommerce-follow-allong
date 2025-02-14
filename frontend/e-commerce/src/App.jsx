@@ -9,6 +9,7 @@ import './App.css';
 import EditProduct from './components/edit';
 import Cart from './components/cart';
 import MyProducts from './components/myproduct';
+import ProductInfoPage from './components/infopage';
 
 const App = () => {
   return (
@@ -20,9 +21,9 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/add-product" element={<AddProduct />} />
         <Route path="/edit-product/:id" element={<EditProduct />} />
-        <Route path="/cart" element={<Cart/>} />
-        <Route path="/product" element={<MyProducts/>} />
-
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/product" element={<MyProducts />} />
+        <Route path="/product/:id" element={<ProductInfoPage />} />
       </Routes>
     </Router>
   );

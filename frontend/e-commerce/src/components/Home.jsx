@@ -23,24 +23,8 @@ const MyProducts = () => {
     fetchProducts();
   }, []);
 
-  // const handleDelete = async (productId) => {
-  //   try {
-  //     await axios.delete(`http://localhost:5000/api/products/${productId}`);
-  //     setProducts(products.filter(product => product._id !== productId));
-  //   } catch (error) {
-  //     console.error('Error deleting product:', error.response?.data?.message || error.message);
-  //   }
-  // };
-
-  // const handleEdit = (productId) => {
-  //   window.location.href = `/edit-product/${productId}`;
-  // };
-
-  const handleAddToCart = (product) => {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(product);
-    localStorage.setItem('cart', JSON.stringify(cart));
-    navigate('/cart');
+  const handleProductClick = (product) => {
+    navigate(`/product/${product._id}`);
   };
 
   return (
@@ -48,14 +32,11 @@ const MyProducts = () => {
       <h2>Home</h2>
       <ul className="products-list">
         {products.map((product) => (
-          <li key={product._id} className="product-item">
+          <li key={product._id} className="product-item" onClick={() => handleProductClick(product)}>
             <img src={`http://localhost:5000/${product.images[0]}`} alt={product.name} className="product-image" />
             <h3 className="product-name">{product.name}</h3>
             <p className="product-description">{product.description}</p>
             <p className="product-price">${product.price}</p>
-            {/* <button className="edit-button" onClick={() => handleEdit(product._id)}>Edit</button> */}
-            {/* <button className="delete-button" onClick={() => handleDelete(product._id)}>Delete</button> */}
-            <button className="add-to-cart-button" onClick={() => handleAddToCart(product)}>Add to Cart</button>
           </li>
         ))}
       </ul>
