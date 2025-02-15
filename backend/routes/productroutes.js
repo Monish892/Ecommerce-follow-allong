@@ -45,7 +45,7 @@ router.get('/product', authMiddleware, async (req, res) => {
     const products = await Product.find({ user: req.user._id });
     res.status(200).json(products);
   } catch (error) {
-    console.error('Error fetching user products:', error); // Log the error details
+    console.error('Error fetching user products:', error); 
     res.status(500).json({ message: 'Error fetching user products', error });
   }
 });
@@ -58,7 +58,7 @@ router.get('/:id', async (req, res) => {
     }
     res.status(200).json(product);
   } catch (error) {
-    console.error('Error fetching product:', error); // Log the error details
+    console.error('Error fetching product:', error); 
     res.status(500).json({ message: 'Error fetching product', error });
   }
 });

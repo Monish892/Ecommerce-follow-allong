@@ -513,5 +513,38 @@ In Milestone 16, we implemented the "Add to Cart" functionality and a quantity b
 
 ---
 
+## milestone-17 progress
+
+# Backend Endpoint for Adding Products to Cart
+
+## Overview
+In Milestone 17, we focused on creating a backend endpoint to add products to the cart and store them in the database. This involves editing the user schema to include cart products and writing an endpoint to handle the addition of products to the cart.
+
+## Learning Goals 🎯
+By the end of this milestone, you will:
+1. Edit the user schema to store cart products.
+2. Write an endpoint to receive the product details and store them in the database.
+
+## Implementation Summary
+
+### User Schema Update:
+- Modified the user schema to include a `cart` field.
+- The `cart` field is an array that stores product details.
+
+### Add to Cart Endpoint:
+- Created a new POST endpoint `/api/cart/add` to handle adding products to the cart.
+- The endpoint receives product details (e.g., product ID, quantity) and updates the user's cart in the database.
+
+## Technologies Used
+- **Backend**:
+  - Node.js and Express.js for creating the endpoint.
+  - MongoDB for storing cart data.
+
+## How to Use
+1. Send a POST request to `/api/cart/add` with the product details.
+2. The endpoint will update the user's cart in the database with the provided product details.
+
+---
+
 
 

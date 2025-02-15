@@ -27,6 +27,7 @@ const MyProducts = () => {
     navigate(`/product/${product._id}`);
   };
 
+
   return (
     <div className="products-container">
       <h2>Home</h2>
@@ -37,6 +38,9 @@ const MyProducts = () => {
             <h3 className="product-name">{product.name}</h3>
             <p className="product-description">{product.description}</p>
             <p className="product-price">${product.price}</p>
+
+            
+
           </li>
         ))}
       </ul>
