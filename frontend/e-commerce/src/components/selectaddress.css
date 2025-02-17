@@ -1,0 +1,41 @@
+.select-address-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .select-address-page h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .select-address-page ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .select-address-page li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .select-address-page li.selected {
+    background-color: #ffd700;
+  }
+  
+  .select-address-page .confirm-order-button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .select-address-page .confirm-order-button:hover {
+    background-color: #ffd700;
+  }

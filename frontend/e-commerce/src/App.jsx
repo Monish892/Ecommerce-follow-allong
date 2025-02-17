@@ -10,9 +10,19 @@ import EditProduct from './components/edit';
 import Cart from './components/cart';
 import MyProducts from './components/myproduct';
 import ProductInfoPage from './components/infopage';
+import ProfilePage from './components/profile';
+import AddressForm from './components/addres';
+import SelectAddress from './components/selectaddress';
+import OrderConfirmation from './components/order';
+import OrderSuccess from './components/sucess';
+import UserOrders from './components/userorder';
+import { PayPalScriptProvider } from '@paypal/react-paypal-js';
+
 
 const App = () => {
   return (
+        <PayPalScriptProvider options={{ "client-id": "AS-ekrsDQNemBeJ5kdhBnYv6kEMttrnonln7d-mAUMStg46nAdZWuRLzsh4-t6fX58beNq75n7cdfPNa" }}>
+
     <Router>
       <Navbar />
       <Routes>
@@ -24,8 +34,18 @@ const App = () => {
         <Route path="/cart" element={<Cart />} />
         <Route path="/product" element={<MyProducts />} />
         <Route path="/product/:id" element={<ProductInfoPage />} />
+        <Route path="/profile" element={<ProfilePage/>} />
+        <Route path="/address" element={<AddressForm/>} />
+        <Route path="/address/:addressId" element={<AddressForm />} />
+        <Route path="/select-address" element={<SelectAddress />} />
+        <Route path="/order-confirmation" element={<OrderConfirmation />} />
+        <Route path="/order-success" element={<OrderSuccess />} />
+        <Route path="/orders" element={<UserOrders />} />
+
       </Routes>
     </Router>
+    </PayPalScriptProvider>
+
   );
 };
 

@@ -1,49 +1,77 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [profilePhoto, setProfilePhoto] = useState(null);
   const [error, setError] = useState('');
   const navigate = useNavigate();
+
+  const handleFileChange = (e) => {
+    setProfilePhoto(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('password', password);
+    if (profilePhoto) {
+      formData.append('profilePhoto', profilePhoto);
+    }
+
     try {
-      const response = await fetch('http://localhost:5000/api/auth/signup', {
-        method: 'POST',
+      const response = await axios.post('http://localhost:5000/api/auth/signup', formData, {
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'multipart/form-data',
         },
-        body: JSON.stringify({ name, email, password }),
       });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.message || 'An error occurred during signup. Please try again.');
-      }
-
-      const data = await response.json();
-      localStorage.setItem('authToken', data.token);
+      console.log(response.data);
+      alert('Signup successful!');
       navigate('/login');
     } catch (error) {
-      setError(error.message);
-      console.error('Error during signup:', error);
+      console.error('Error during signup:', error.response?.data?.message || error.message);
+      setError(error.response?.data?.message || 'Failed to signup. Please try again.');
     }
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
+    <div className="signup-page">
+      <h2>Signup</h2>
       {error && <p style={{ color: 'red' }}>{error}</p>}
       <form onSubmit={handleSubmit}>
-        <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required />
-        <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-        <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-        <button type="submit">Sign Up</button>
+        <input
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          required
+        />
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+        />
+        <input
+          type="file"
+          onChange={handleFileChange}
+        />
+        <button type="submit">Signup</button>
       </form>
     </div>
   );

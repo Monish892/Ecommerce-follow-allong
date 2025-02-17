@@ -5,6 +5,10 @@ const dotenv = require('dotenv');
 const app = express();
 dotenv.config();
 const path = require('path');
+const userRoutes = require('./routes/userroutes');
+const orderRoutes = require('./routes/orderroutes'); 
+
+
 
 const port = process.env.port || 5000;
 
@@ -17,10 +21,21 @@ mongoose.connect('mongodb+srv://grmonishs65:2007@asap-project.izf50.mongodb.net/
 
 const authroutes = require('./routes/authroutes');
 const productRoutes = require('./routes/productroutes'); 
+const { use } = require('react');
 
 
 app.use('/api/auth', authroutes);
 app.use('/api/products', productRoutes); 
+
+app.use('/api/users',userRoutes);
+
+app.use('/api/orders', orderRoutes);
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something broke!');
+});
+
 
 app.use('/uploads', express.static(path.join(__dirname, '/uploads')));
 

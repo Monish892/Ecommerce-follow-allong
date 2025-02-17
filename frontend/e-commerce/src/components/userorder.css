@@ -1,0 +1,35 @@
+.user-orders-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .user-orders-page h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .user-orders-page ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-orders-page li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+  }
+  
+  .user-orders-page li h3 {
+    margin-top: 0;
+  }
+  
+  .user-orders-page li ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-orders-page li ul li {
+    padding: 5px 0;
+  }

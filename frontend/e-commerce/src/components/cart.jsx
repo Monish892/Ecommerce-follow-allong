@@ -1,19 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import './cart.css';
+import { useNavigate } from 'react-router-dom';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     setCartItems(cart);
-    console.log(cart)
+    console.log(cart);
   }, []);
 
   const handleRemoveFromCart = (productId) => {
     const updatedCart = cartItems.filter(item => item.productId !== productId);
     setCartItems(updatedCart);
     localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
+  const handlePlaceOrder = (item) => {
+    navigate('/select-address', { state: { selectedProduct: item } });
   };
 
   return (
@@ -28,6 +34,7 @@ const Cart = () => {
             <p className="cart-price">${item.price}</p>
             <p className="cart-quantity">Quantity: {item.quantity}</p>
             <button className="remove-from-cart-button" onClick={() => handleRemoveFromCart(item.productId)}>Remove</button>
+            <button className="place-order-button" onClick={() => handlePlaceOrder(item)}>Place Order</button>
           </li>
         ))}
       </ul>

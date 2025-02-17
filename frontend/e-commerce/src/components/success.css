@@ -1,0 +1,28 @@
+.order-success-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .order-success-page h2 {
+    margin-bottom: 20px;
+  }
+  
+  .order-success-page p {
+    margin-bottom: 20px;
+  }
+  
+  .go-to-home-button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .go-to-home-button:hover {
+    background-color: #ffd700;
+  }

@@ -1,0 +1,36 @@
+.address-form-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .address-form-page h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .address-form-page form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .address-form-page form input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  .address-form-page form button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .address-form-page form button:hover {
+    background-color: #ffd700;
+  }

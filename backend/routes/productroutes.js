@@ -1,7 +1,7 @@
 const express = require('express');
 const Product = require('../models/product');
 const multer = require('multer');
-const authMiddleware = require('../middleware/authmiddleware');
+const authMiddleware = require('../middleware/authMiddleware');
 const router = express.Router();
 
 const storage = multer.diskStorage({
@@ -25,7 +25,7 @@ router.post('/', authMiddleware, upload.array('images', 10), async (req, res) =>
     await product.save();
     res.status(201).json(product);
   } catch (error) {
-    console.error('Error creating product:', error); // Log the error details
+    console.error('Error creating product:', error); 
     res.status(500).json({ message: 'Error creating product', error });
   }
 });
@@ -35,7 +35,7 @@ router.get('/', async (req, res) => {
     const products = await Product.find();
     res.status(200).json(products);
   } catch (error) {
-    console.error('Error fetching products:', error); // Log the error details
+    console.error('Error fetching products:', error); 
     res.status(500).json({ message: 'Error fetching products', error });
   }
 });

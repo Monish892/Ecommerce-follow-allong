@@ -1,0 +1,48 @@
+.order-confirmation-page {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .order-confirmation-page h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .order-details {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  .order-details h3 {
+    margin-top: 0;
+  }
+  
+  .order-details ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .order-details li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .order-details li:last-child {
+    border-bottom: none;
+  }
+  
+  .place-order-button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .place-order-button:hover {
+    background-color: #ffd700;
+  }
