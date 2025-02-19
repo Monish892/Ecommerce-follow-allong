@@ -9,6 +9,7 @@ const OrderConfirmation = () => {
   const [selectedAddress, setSelectedAddress] = useState(null);
   const [paymentMethod, setPaymentMethod] = useState('COD');
   const [orders, setOrders] = useState([]);
+  const [errorMessage, setErrorMessage] = useState(''); // New state variable for error message
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -41,13 +42,27 @@ const OrderConfirmation = () => {
         },
       });
       setOrders([...orders, response.data]);
-      console.log('Order placed');
+      console.log('Order placed:', response.data);
       navigate('/order-success');
     } catch (error) {
-      console.error('Error placing order:', error.response?.data?.message || error.message);
+      console.error('Error placing order:', error);
+      if (error.response) {
+        // Server responded with a status other than 200 range
+        console.error('Response data:', error.response.data);
+        console.error('Response status:', error.response.status);
+        console.error('Response headers:', error.response.headers);
+        setErrorMessage(error.response.data.message || 'Server error');
+      } else if (error.request) {
+        // Request was made but no response was received
+        console.error('Request data:', error.request);
+        setErrorMessage('No response from server. Please try again later.');
+      } else {
+        // Something happened in setting up the request
+        console.error('Error message:', error.message);
+        setErrorMessage('Error placing order. Please try again.');
+      }
     }
   };
-
   const handleCancelOrder = async (orderId) => {
     try {
       const token = localStorage.getItem('token');
@@ -124,6 +139,7 @@ const OrderConfirmation = () => {
           />
         )}
         <button className="place-order-button" onClick={handlePlaceOrder}>Place Order</button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Display error message */}
       </div>
     
     </div>
