@@ -7,6 +7,8 @@ dotenv.config();
 const path = require('path');
 const userRoutes = require('./routes/userroutes');
 const orderRoutes = require('./routes/orderroutes'); 
+const cartRoutes = require('./routes/cartroutes'); 
+
 
 
 
@@ -30,6 +32,8 @@ app.use('/api/products', productRoutes);
 app.use('/api/users',userRoutes);
 
 app.use('/api/orders', orderRoutes);
+app.use('/api/cart', cartRoutes); 
+
 
 app.use((err, req, res, next) => {
   console.error(err.stack);

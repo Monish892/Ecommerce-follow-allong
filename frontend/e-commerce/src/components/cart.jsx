@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './cart.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
@@ -22,6 +23,30 @@ const Cart = () => {
     navigate('/select-address', { state: { selectedProduct: item } });
   };
 
+  const handleQuantityChange = async (productId, change) => {
+    const updatedCart = cartItems.map(item => {
+      if (item.productId === productId) {
+        const newQuantity = item.quantity + change;
+        if (newQuantity > 0) {
+          item.quantity = newQuantity;
+        }
+      }
+      return item;
+    }).filter(item => item.quantity > 0);
+
+    setCartItems(updatedCart);
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+
+    try {
+      await axios.put('http://localhost:5000/api/cart/update-quantity', {
+        productId,
+        quantity: change
+      });
+    } catch (error) {
+      console.error('Error updating quantity:', error);
+    }
+  };
+
   return (
     <div className="cart-container">
       <h2>My Cart</h2>
@@ -33,6 +58,8 @@ const Cart = () => {
             <p className="cart-description">{item.description}</p>
             <p className="cart-price">${item.price}</p>
             <p className="cart-quantity">Quantity: {item.quantity}</p>
+            <button className="quantity-button" onClick={() => handleQuantityChange(item.productId, -1)}>-</button>
+            <button className="quantity-button" onClick={() => handleQuantityChange(item.productId, 1)}>+</button>
             <button className="remove-from-cart-button" onClick={() => handleRemoveFromCart(item.productId)}>Remove</button>
             <button className="place-order-button" onClick={() => handlePlaceOrder(item)}>Place Order</button>
           </li>

@@ -546,5 +546,27 @@ By the end of this milestone, you will:
 
 ---
 
+# Milestone 18: Cart Functionality
+
+## 🎯 Learning Goals
+
+By the end of this milestone, you will:
+- Create an endpoint to receive requests from the cart page.
+- Create a backend endpoint to fetch all products inside the cart for a user by their email.
+
+---
+
+## 📚 Overview
+
+In this milestone, you'll implement the cart functionality, including creating backend endpoints for:
+1. Receiving cart data from the frontend.
+2. Fetching all the products in a user's cart based on their email.
+
+You will learn how to manage cart data on the backend and interact with a database to store the user's cart.
+
+---
+
+
+
 
 
