@@ -566,6 +566,29 @@ You will learn how to manage cart data on the backend and interact with a databa
 
 ---
 
+# Milestone 20: Profile Page Functionality
+
+## 🎯 Learning Goals
+
+By the end of this milestone, you will:
+- Create a backend endpoint that sends all user data using their email.
+- Create a frontend profile page that displays all the user data, including profile photo, name, email, and addresses.
+
+---
+
+## 📚 Overview
+
+In this milestone, you will implement the profile page functionality for your application. This involves creating:
+1. A **backend endpoint** that retrieves all the data related to the logged-in user based on their email.
+2. A **frontend profile page** that will display the user's details such as their name, email, profile photo, and address information.
+
+This milestone helps you understand how to manage user data securely and display it in a user-friendly way.
+
+---
+
+
+
+
 
 
 
