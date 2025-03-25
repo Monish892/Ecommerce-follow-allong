@@ -11,15 +11,17 @@ const cartRoutes = require('./routes/cartroutes');
 
 const port = process.env.port || 5000;
 
-// CORS setup to allow requests from the deployed frontend
+// Define the CORS options to allow multiple frontend origins
 const corsOptions = {
-  origin: 'https://ecommerce-follow-allong-rn45.vercel.app/', // Add the deployed frontend URL here
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow necessary HTTP methods
+  origin: [
+    'https://ecommerce-follow-allong-rn45.vercel.app', // Your first Vercel frontend domain
+    'http://localhost:5173' 
+  ], 
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allowing the necessary HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow necessary headers
 };
 
-// Apply CORS middleware
-app.use(cors(corsOptions));
+app.use(cors(corsOptions)); // Apply CORS with the defined options
 
 app.use(express.json());
 
@@ -29,7 +31,6 @@ mongoose.connect('mongodb+srv://grmonishs65:2007@asap-project.izf50.mongodb.net/
 
 const authroutes = require('./routes/authroutes');
 const productRoutes = require('./routes/productroutes'); 
-const { use } = require('react');
 
 app.use('/api/auth', authroutes);
 app.use('/api/products', productRoutes); 
