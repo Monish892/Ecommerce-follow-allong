@@ -1,7 +1,7 @@
 const express = require('express');
 const Product = require('../models/product');
 const multer = require('multer');
-const authMiddleware = require('../middleware/authMiddleware');
+const authMiddleware = require('../middleware/authmiddleware');
 const router = express.Router();
 
 const storage = multer.diskStorage({
