@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
+export const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace with your actual base URL
+
 const EditProduct = () => {
   const { id } = useParams();
   const navigate = useNavigate();
@@ -21,13 +23,13 @@ const EditProduct = () => {
     const fetchProduct = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get(`http://localhost:5000/api/products/${id}`, {
+        const response = await axios.get(`${BASE_URL}/api/products/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
         });
         setProduct(response.data);
-        setImagePreviews(response.data.images.map(image => `http://localhost:5000/${image}`));
+        setImagePreviews(response.data.images.map(image => `${BASE_URL}/${image}`));
       } catch (error) {
         console.error('Error fetching product:', error.response?.data?.message || error.message);
       } finally {
@@ -65,7 +67,7 @@ const EditProduct = () => {
 
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/products/${id}`, formData, {
+      await axios.put(`${BASE_URL}/api/products/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`

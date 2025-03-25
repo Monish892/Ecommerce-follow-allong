@@ -3,6 +3,8 @@ import './cart.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+export const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace with your actual base URL
+
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);
   const navigate = useNavigate();
@@ -38,7 +40,7 @@ const Cart = () => {
     localStorage.setItem('cart', JSON.stringify(updatedCart));
 
     try {
-      await axios.put('http://localhost:5000/api/cart/update-quantity', {
+      await axios.put(`${BASE_URL}/api/cart/update-quantity`, {
         productId,
         quantity: change
       });
@@ -53,7 +55,7 @@ const Cart = () => {
       <ul className="cart-list">
         {cartItems.map((item) => (
           <li key={item.productId} className="cart-item">
-            <img src={`http://localhost:5000/${item.image}`} alt={item.name} className="cart-image" />
+            <img src={`${BASE_URL}/${item.image}`} alt={item.name} className="cart-image" />
             <h3 className="cart-name">{item.name}</h3>
             <p className="cart-description">{item.description}</p>
             <p className="cart-price">${item.price}</p>

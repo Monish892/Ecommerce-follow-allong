@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+export const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com';
+
 const AddProduct = () => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState('');
@@ -36,7 +38,7 @@ const AddProduct = () => {
     try {
       const token = localStorage.getItem('token'); 
       const response = await axios.post(
-        'http://localhost:5000/api/products',
+        `${BASE_URL}/api/products`,
         formData,
         {
           headers: {

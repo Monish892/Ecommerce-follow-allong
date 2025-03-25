@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './infopage.css';
 
+const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Directly define the base URL here
+
 const ProductInfoPage = () => {
-  const { id } = useParams(); 
+  const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [error, setError] = useState('');
@@ -11,67 +13,48 @@ const ProductInfoPage = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/products/${id}`);
-        if (!response.ok) {
-          throw new Error('Product not found');
-        }
+        const response = await fetch(`${BASE_URL}/api/products/${id}`);
+        if (!response.ok) throw new Error('Product not found');
         const data = await response.json();
-        setProduct(data); 
+        setProduct(data);
       } catch (error) {
-        console.error('Error fetching product:', error);
-        setError(error.message);
+        setError('Error fetching product. Please try again.');
       }
     };
     fetchProduct();
   }, [id]);
 
-  const handleQuantityChange = (e) => {
-    setQuantity(e.target.value);
-  };
+  const handleQuantityChange = (e) => setQuantity(Number(e.target.value));
 
   const handleAddToCart = () => {
-    const cartItem = {
-      productId: product._id,
-      name: product.name,
-      price: product.price,
-      image: product.images[0],
-      quantity,
+    const cartItem = { 
+      productId: product._id, 
+      name: product.name, 
+      price: product.price, 
+      image: product.images[0], 
+      quantity 
     };
-
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    cart.push(cartItem); 
-    localStorage.setItem('cart', JSON.stringify(cart)); 
-
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(cartItem);
+    localStorage.setItem('cart', JSON.stringify(cart));
     alert('Product added to cart!');
   };
 
+  if (error) return <p style={{ color: 'red' }}>{error}</p>;
+
+  if (!product) return <p>Loading product details...</p>;
+
   return (
     <div className="product-info">
-      {error ? (
-        <p style={{ color: 'red' }}>{error}</p>
-      ) : product ? (
-        <>
-          <h1>{product.name}</h1>
-          <img src={`http://localhost:5000/${product.images[0]}`} alt={product.name} />
-          <p>{product.description}</p>
-          <h3>Price: ${product.price}</h3>
-
-          <div>
-            <label>Quantity: </label>
-            <input
-              type="number"
-              min="1"
-              value={quantity}
-              onChange={handleQuantityChange}
-              style={{ width: '50px' }}
-            />
-          </div>
-
-          <button onClick={handleAddToCart}>Add to Cart</button>
-        </>
-      ) : (
-        <p>Loading product details...</p>
-      )}
+      <h1>{product.name}</h1>
+      <img src={`${BASE_URL}/${product.images[0]}`} alt={product.name} />
+      <p>{product.description}</p>
+      <h3>Price: ${product.price}</h3>
+      <div>
+        <label>Quantity: </label>
+        <input type="number" min="1" value={quantity} onChange={handleQuantityChange} />
+      </div>
+      <button onClick={handleAddToCart}>Add to Cart</button>
     </div>
   );
 };

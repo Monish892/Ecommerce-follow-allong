@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
+// Define the BASE_URL as a constant
+const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace this with your actual base URL
+
 const Signup = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -27,7 +30,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/signup', formData, {
+      const response = await axios.post(`${BASE_URL}/api/auth/signup`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

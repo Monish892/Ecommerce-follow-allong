@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
+export const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace with your actual base URL
+
 const MyProducts = () => {
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
@@ -10,7 +12,7 @@ const MyProducts = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/products', {
+        const response = await axios.get(`${BASE_URL}/api/products`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`
           }
@@ -27,20 +29,16 @@ const MyProducts = () => {
     navigate(`/product/${product._id}`);
   };
 
-
   return (
     <div className="products-container">
       <h2>Home</h2>
       <ul className="products-list">
         {products.map((product) => (
           <li key={product._id} className="product-item" onClick={() => handleProductClick(product)}>
-            <img src={`http://localhost:5000/${product.images[0]}`} alt={product.name} className="product-image" />
+            <img src={`${BASE_URL}/${product.images[0]}`} alt={product.name} className="product-image" />
             <h3 className="product-name">{product.name}</h3>
             <p className="product-description">{product.description}</p>
             <p className="product-price">${product.price}</p>
-
-            
-
           </li>
         ))}
       </ul>

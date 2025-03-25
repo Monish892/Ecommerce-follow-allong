@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './userorder.css';
 
+// Define the BASE_URL as a constant
+const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace this with your actual base URL
+
 const UserOrders = () => {
   const [orders, setOrders] = useState([]);
   const [error, setError] = useState('');
@@ -10,7 +13,7 @@ const UserOrders = () => {
     const fetchOrders = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/orders/user-orders', {
+        const response = await axios.get(`${BASE_URL}/api/orders/user-orders`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -27,7 +30,7 @@ const UserOrders = () => {
   const handleCancelOrder = async (orderId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/orders/cancel-order/${orderId}`, {}, {
+      await axios.put(`${BASE_URL}/api/orders/cancel-order/${orderId}`, {}, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

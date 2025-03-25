@@ -3,6 +3,9 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './profile.css';
 
+// Define the BASE_URL as a constant
+const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace this with your actual base URL
+
 const ProfilePage = () => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState('');
@@ -12,7 +15,7 @@ const ProfilePage = () => {
     const fetchUserProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/users/profile', {
+        const response = await axios.get(`${BASE_URL}/api/users/profile`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -34,7 +37,7 @@ const ProfilePage = () => {
   const handleDeleteAddress = async () => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete('http://localhost:5000/api/users/address', {
+      await axios.delete(`${BASE_URL}/api/users/address`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -56,7 +59,7 @@ const ProfilePage = () => {
         <>
           <div className="profile-section">
             <img
-              src={user.profilePhoto ? `http://localhost:5000/${user.profilePhoto}` : 'http://localhost:5000/uploads/default-profile.png'}
+              src={user.profilePhoto ? `${BASE_URL}/${user.profilePhoto}` : `${BASE_URL}/uploads/default-profile.png`}
               alt="Profile"
               className="profile-photo"
             />

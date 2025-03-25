@@ -3,6 +3,9 @@ import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './selectaddress.css';
 
+// Define the BASE_URL as a constant
+const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace this with your actual base URL
+
 const SelectAddress = () => {
   const [addresses, setAddresses] = useState([]);
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -15,7 +18,7 @@ const SelectAddress = () => {
     const fetchAddresses = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/users/addresses', {
+        const response = await axios.get(`${BASE_URL}/api/users/addresses`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -51,7 +54,6 @@ const SelectAddress = () => {
             <li key={index} className={selectedAddress === address ? 'selected' : ''}>
               {address.address1}, {address.city}, {address.country}
               <button onClick={() => handleSelectAddress(address)}>Select</button>
-              {/* <button onClick={() => navigate(`/address/${address._id}`)}>Edit</button> */}
             </li>
           ))}
         </ul>

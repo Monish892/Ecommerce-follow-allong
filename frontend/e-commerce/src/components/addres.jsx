@@ -3,6 +3,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './addres.css';
 
+export const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com';
+
 const AddressForm = () => {
   const [country, setCountry] = useState('');
   const [city, setCity] = useState('');
@@ -17,7 +19,7 @@ const AddressForm = () => {
     const fetchAddress = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/users/profile', {
+        const response = await axios.get(`${BASE_URL}/api/users/profile`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -47,7 +49,7 @@ const AddressForm = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.post('http://localhost:5000/api/users/address', newAddress, {
+      const response = await axios.post(`${BASE_URL}/api/users/address`, newAddress, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

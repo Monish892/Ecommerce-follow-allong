@@ -4,6 +4,9 @@ import axios from 'axios';
 import { PayPalButtons } from '@paypal/react-paypal-js';
 import './order.css';
 
+// Define the BASE_URL as a constant
+const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace this with the actual base URL
+
 const OrderConfirmation = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedAddress, setSelectedAddress] = useState(null);
@@ -36,7 +39,7 @@ const OrderConfirmation = () => {
         address: selectedAddress,
         paymentMethod,
       };
-      const response = await axios.post('http://localhost:5000/api/orders/place-order', orderDetails, {
+      const response = await axios.post(`${BASE_URL}/api/orders/place-order`, orderDetails, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -63,10 +66,11 @@ const OrderConfirmation = () => {
       }
     }
   };
+
   const handleCancelOrder = async (orderId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/orders/${orderId}`, {
+      await axios.delete(`${BASE_URL}/api/orders/${orderId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -141,7 +145,6 @@ const OrderConfirmation = () => {
         <button className="place-order-button" onClick={handlePlaceOrder}>Place Order</button>
         {errorMessage && <p className="error-message">{errorMessage}</p>} {/* Display error message */}
       </div>
-    
     </div>
   );
 };

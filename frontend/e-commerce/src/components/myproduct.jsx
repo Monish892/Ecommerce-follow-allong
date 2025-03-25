@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+
+const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Directly define the base URL here
 
 const MyProducts = () => {
   const [products, setProducts] = useState([]);
@@ -10,10 +12,8 @@ const MyProducts = () => {
     const fetchProducts = async () => {
       try {
         const token = localStorage.getItem('token');
-        const response = await axios.get('http://localhost:5000/api/products/product', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
+        const response = await axios.get(`${BASE_URL}/api/products/product`, {
+          headers: { Authorization: `Bearer ${token}` },
         });
         setProducts(response.data);
       } catch (error) {
@@ -26,10 +26,8 @@ const MyProducts = () => {
   const handleDelete = async (productId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/products/${productId}`, {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
+      await axios.delete(`${BASE_URL}/api/products/${productId}`, {
+        headers: { Authorization: `Bearer ${token}` },
       });
       setProducts(products.filter(product => product._id !== productId));
     } catch (error) {
@@ -47,7 +45,7 @@ const MyProducts = () => {
       <ul className="products-list">
         {products.map((product) => (
           <li key={product._id} className="product-item">
-            <img src={`http://localhost:5000/${product.images[0]}`} alt={product.name} className="product-image" />
+            <img src={`${BASE_URL}/${product.images[0]}`} alt={product.name} className="product-image" />
             <h3 className="product-name">{product.name}</h3>
             <p className="product-description">{product.description}</p>
             <p className="product-price">${product.price}</p>
