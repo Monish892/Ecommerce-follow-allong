@@ -13,7 +13,7 @@ const port = process.env.port || 5000;
 
 // CORS setup to allow requests from the deployed frontend
 const corsOptions = {
-  origin: 'https://ecommerce-follow-allong-ddr5.vercel.app', // Add the deployed frontend URL here
+  origin: 'https://ecommerce-follow-allong-rn45.vercel.app/', // Add the deployed frontend URL here
   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow necessary HTTP methods
   allowedHeaders: ['Content-Type', 'Authorization'], // Allow necessary headers
 };
