@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
 // Define the BASE_URL as a constant
-const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace this with your actual base URL
+const BASE_URL = 'https://ecommerce-follow-allong-5.onrender.com'; // Replace this with your actual base URL
 
 const Signup = () => {
   const [name, setName] = useState('');

@@ -3,7 +3,7 @@ import './cart.css';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-export const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace with your actual base URL
+export const BASE_URL = 'https://ecommerce-follow-allong-5.onrender.com'; // Replace with your actual base URL
 
 const Cart = () => {
   const [cartItems, setCartItems] = useState([]);

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import './infopage.css';
 
-const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Directly define the base URL here
+const BASE_URL = 'https://ecommerce-follow-allong-5.onrender.com'; // Directly define the base URL here
 
 const ProductInfoPage = () => {
   const { id } = useParams();

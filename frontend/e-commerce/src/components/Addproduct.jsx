@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
-export const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com';
+export const BASE_URL = 'https://ecommerce-follow-allong-5.onrender.com';
 
 const AddProduct = () => {
   const [name, setName] = useState('');

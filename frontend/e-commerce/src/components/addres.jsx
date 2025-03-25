@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './addres.css';
 
-export const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com';
+export const BASE_URL = 'https://ecommerce-follow-allong-5.onrender.com';
 
 const AddressForm = () => {
   const [country, setCountry] = useState('');

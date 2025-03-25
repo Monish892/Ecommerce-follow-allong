@@ -5,7 +5,7 @@ import { PayPalButtons } from '@paypal/react-paypal-js';
 import './order.css';
 
 // Define the BASE_URL as a constant
-const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace this with the actual base URL
+const BASE_URL = 'https://ecommerce-follow-allong-5.onrender.com'; // Replace this with the actual base URL
 
 const OrderConfirmation = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);

@@ -4,7 +4,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import './selectaddress.css';
 
 // Define the BASE_URL as a constant
-const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace this with your actual base URL
+const BASE_URL = 'https://ecommerce-follow-allong-5.onrender.com'; // Replace this with your actual base URL
 
 const SelectAddress = () => {
   const [addresses, setAddresses] = useState([]);

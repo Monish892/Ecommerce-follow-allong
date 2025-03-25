@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
 
-export const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Replace with your actual base URL
+export const BASE_URL = 'https://ecommerce-follow-allong-5.onrender.com'; // Replace with your actual base URL
 
 const EditProduct = () => {
   const { id } = useParams();

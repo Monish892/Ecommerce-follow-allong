@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const BASE_URL = 'https://ecommerce-follow-allong-3.onrender.com'; // Directly define the base URL here
+const BASE_URL = 'https://ecommerce-follow-allong-5.onrender.com'; // Directly define the base URL here
 
 const Login = () => {
   const [email, setEmail] = useState('');
